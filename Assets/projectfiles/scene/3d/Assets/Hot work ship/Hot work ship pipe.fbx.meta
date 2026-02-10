@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1cfe90dcd96513a418fdb8d0355bde09
+guid: db3ebb84ffbf7084c8fa32ddd129444a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,88 +7,43 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: 1001
-    second: {fileID: 2100000, guid: 43119c2c53d8e654bbf576465f8ed11e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: 1002
-    second: {fileID: 2100000, guid: a67c133e6a7aff0488eb4a4584759b4e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: 1003
-    second: {fileID: 2100000, guid: ed2200048ccdcac49803ee56ca07084b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: 3DModel_LowPoly
-    second: {fileID: 2100000, guid: cc34cb81d88d57f4091e17ef1356b6e1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Bolt2Tex1
-    second: {fileID: 2100000, guid: 567d6a00c2643624ca8a17409263a03e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Bolt2Tex1.002
-    second: {fileID: 2100000, guid: 7a8daa8b05b52294598cca1a9fb4dacb, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cardbox_1
-    second: {fileID: 2100000, guid: 98b3779911803634c96d85938c674c4d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Gun Metal
-    second: {fileID: 2100000, guid: f8dc1f0afdd8c064aa17ee87ab81e59f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Gun Metal.002
-    second: {fileID: 2100000, guid: 6aed45e5c93d03641933b553fcc45ef8, type: 2}
+    second: {fileID: 2100000, guid: c50cf027777b44542965c64eadc57012, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Ladder Grip
-    second: {fileID: 2100000, guid: cbead747a8e92b643969ad6c7fb02ae2, type: 2}
+      name: Red painted damaged metal.002
+    second: {fileID: 2100000, guid: 42c0a71f06a5dfb458a1d7e4a41ca202, type: 2}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Ladder Metal
-    second: {fileID: 2100000, guid: bfd79c3e8a2785d409c6f5d6c91da5fc, type: 2}
+      name: metal04_diffuse
+    second: {fileID: 2800000, guid: 785f10a87a5f63a4ba6b203f8b8de7d8, type: 3}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Material.015
-    second: {fileID: 2100000, guid: b009b64f29cf3ba45b1d513ed1f5ec2b, type: 2}
+      name: metal_metallic
+    second: {fileID: 2800000, guid: 97ea2169c2861be4f89daa63dbcb3361, type: 3}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Red painted damaged metal
-    second: {fileID: 2100000, guid: 63b27a33a95396b47875a8af9aff514e, type: 2}
+      name: metal_normal_opengl
+    second: {fileID: 2800000, guid: acebf16eb17c60e49b8bde7d13618414, type: 3}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Red painted damaged metal.001
-    second: {fileID: 2100000, guid: ef08b6d8d5d9fc74ab3a6de383f5f805, type: 2}
+      name: plane_divided_DefaultMaterial_BaseColor
+    second: {fileID: 2800000, guid: 40fdc42d58b9d9241a6aa620a2f618fe, type: 3}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Rusted Metal
-    second: {fileID: 2100000, guid: c547309fb44f2c44da13ae4d8793950f, type: 2}
+      name: plane_divided_DefaultMaterial_Normal
+    second: {fileID: 2800000, guid: faa825db4f7772d4eb473520655246b1, type: 3}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Yellow painted damaged metal
-    second: {fileID: 2100000, guid: 6d138ed8cec78084588ee91d500970c3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Yellow painted damaged metal.001
-    second: {fileID: 2100000, guid: 15138eb66b5578342b051c95ea80a291, type: 2}
+      name: plane_divided_DefaultMaterial_Roughness
+    second: {fileID: 2800000, guid: b17f53b58ecc3364fadd63ebbc30919c, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
