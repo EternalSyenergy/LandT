@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 546a59166dbbb8640b1eb3c862bcc063
+guid: e102658625c22054faf91cb6d664c0f8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,68 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: 3DModel_Custom.002
-    second: {fileID: 2100000, guid: d2a310694e009fe4781d729092c1e564, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Bottle cap
-    second: {fileID: 2100000, guid: 38bec73d471213647a123de38e8db246, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Bottle plastic
-    second: {fileID: 2100000, guid: de8fa90e6baf9314ba546495a856501f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Liquid Glass
-    second: {fileID: 2100000, guid: 0189eb8b5e733bd46b491fb32ef508b6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.004
-    second: {fileID: 2100000, guid: b25fab710d8264c4986e0d5e16d55d89, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.005
-    second: {fileID: 2100000, guid: 4df25b276381a54489e7d0261ac35e05, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Paint_Brush&amp;Pot
-    second: {fileID: 2100000, guid: b6887978b6aabd540a648d930405e577, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Plastic
-    second: {fileID: 2100000, guid: d4b006f761e774147a18e987d000b375, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Procedural Aluminum Foil
-    second: {fileID: 2100000, guid: 4b63abf92d3098f4cb0e8895bf59ed44, type: 2}
+      name: GasDetector1
+    second: {fileID: 2100000, guid: ccddc99fb95997d439165a5dfc4b9a6f, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: 3DModel_Custom
-    second: {fileID: 2800000, guid: 2b1d1d4162c43c84d81784d3d73ae8b4, type: 3}
+      name: 56de3be381d64f74a05288d8fd5b6880_N_GasDetector1_Normal
+    second: {fileID: 2800000, guid: 06ec0d0bd95a08f49a09916a358c8901, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: 3DModel_Custom_Roughness
-    second: {fileID: 2800000, guid: 9433d102a013ace479b3daaaa3cc7e58, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: 86d9bee7b76d4288b41c05b2a62c589b_RGB_Paint_Brush&Pot_BaseColor1001
-    second: {fileID: 2800000, guid: 596ec97f230681a419b976402a0b2e1d, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: e23e1f75321244d2addff389e2394451_N_Paint_Brush&Pot_Normal_OpenGL1001
-    second: {fileID: 2800000, guid: d613196d6857a8e43b311eb4210da9e3, type: 3}
+      name: e8924481454742b686f33c86dfae12dc_RGB_GasDetector1_BaseColor
+    second: {fileID: 2800000, guid: c2d250dd64ca17746bf122f3e0e18511, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

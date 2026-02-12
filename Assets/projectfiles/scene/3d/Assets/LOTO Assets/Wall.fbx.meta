@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 546a59166dbbb8640b1eb3c862bcc063
+guid: dd77be7f8319b9d44be111e165388a34
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,68 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: 3DModel_Custom.002
-    second: {fileID: 2100000, guid: d2a310694e009fe4781d729092c1e564, type: 2}
+      name: Material
+    second: {fileID: 2100000, guid: 89f29d5509213284fa02109b57bcd738, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Bottle cap
-    second: {fileID: 2100000, guid: 38bec73d471213647a123de38e8db246, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Bottle plastic
-    second: {fileID: 2100000, guid: de8fa90e6baf9314ba546495a856501f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Liquid Glass
-    second: {fileID: 2100000, guid: 0189eb8b5e733bd46b491fb32ef508b6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.004
-    second: {fileID: 2100000, guid: b25fab710d8264c4986e0d5e16d55d89, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.005
-    second: {fileID: 2100000, guid: 4df25b276381a54489e7d0261ac35e05, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Paint_Brush&amp;Pot
-    second: {fileID: 2100000, guid: b6887978b6aabd540a648d930405e577, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Plastic
-    second: {fileID: 2100000, guid: d4b006f761e774147a18e987d000b375, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Procedural Aluminum Foil
-    second: {fileID: 2100000, guid: 4b63abf92d3098f4cb0e8895bf59ed44, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: 3DModel_Custom
-    second: {fileID: 2800000, guid: 2b1d1d4162c43c84d81784d3d73ae8b4, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: 3DModel_Custom_Roughness
-    second: {fileID: 2800000, guid: 9433d102a013ace479b3daaaa3cc7e58, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: 86d9bee7b76d4288b41c05b2a62c589b_RGB_Paint_Brush&Pot_BaseColor1001
-    second: {fileID: 2800000, guid: 596ec97f230681a419b976402a0b2e1d, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: e23e1f75321244d2addff389e2394451_N_Paint_Brush&Pot_Normal_OpenGL1001
-    second: {fileID: 2800000, guid: d613196d6857a8e43b311eb4210da9e3, type: 3}
+      name: Material.001
+    second: {fileID: 2100000, guid: 514c8ad006e4d9347895bb343e74520d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
