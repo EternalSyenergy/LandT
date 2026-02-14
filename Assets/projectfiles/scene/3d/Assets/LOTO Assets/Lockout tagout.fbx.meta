@@ -103,7 +103,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Striped Road Marker
-    second: {fileID: 2100000, guid: daae999589d12d24d89438d8bfb38300, type: 2}
+    second: {fileID: 2100000, guid: addc1676150b2fa4b8bd1684b017e441, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -138,57 +138,57 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: StripedRoadMarker1_Color
-    second: {fileID: 2800000, guid: c059388f678aebf4a8c1d0a4ad89f8d6, type: 3}
+    second: {fileID: 2800000, guid: e2d7c6b203fedff449a160bb8b3768d3, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: StripedRoadMarker1_Normal
-    second: {fileID: 2800000, guid: ed477fa460dc20447a1f79b1a8155711, type: 3}
+    second: {fileID: 2800000, guid: c885a328171e3c049830bfc2a7574a61, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: StripedRoadMarker1_Roughness
-    second: {fileID: 2800000, guid: 6c494f096587bcc4e946f92a0d08c588, type: 3}
+    second: {fileID: 2800000, guid: e720a6cf2c8895e43810be642f3cca67, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: VenetianPlaster-JPG
-    second: {fileID: 2800000, guid: d13a42dbef15dfa4d85469537edb4798, type: 3}
+    second: {fileID: 2800000, guid: 9388140c61cc75e4a84acbfa79d19fef, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: VenetianPlaster-NormalDX
-    second: {fileID: 2800000, guid: 1d80673347e3faa4799b72c35c27a3d5, type: 3}
+    second: {fileID: 2800000, guid: cb0339e0e0fe8b5438627e28d311a5c9, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: VenetianPlaster-Roughness
-    second: {fileID: 2800000, guid: 269e960990e29e744a450ab364b535bf, type: 3}
+    second: {fileID: 2800000, guid: d3585374c43504e47b90eb4315547d43, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: metal_11_diffuse
-    second: {fileID: 2800000, guid: cc544a979a23bbd46a835e6f636ae7f7, type: 3}
+    second: {fileID: 2800000, guid: 19f9d95cbe99dd24eae80fb4f3759df3, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: metal_metallic
-    second: {fileID: 2800000, guid: 71b11067addec2142aa3c8f108f18185, type: 3}
+    second: {fileID: 2800000, guid: 0c902b482d409c240a02fdbb9c592f53, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: metal_normal_opengl
-    second: {fileID: 2800000, guid: 3ddc25ba5db283243b067927b632fdff, type: 3}
+    second: {fileID: 2800000, guid: 378d5b502c8e80c4cae7c062d97a881d, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: metal_specular
-    second: {fileID: 2800000, guid: 15c4d70b78dc2334baedd1884edfbe29, type: 3}
+    second: {fileID: 2800000, guid: e77758d58836a384196ae2fc89abfcde, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: plastic-texture-normal-3
-    second: {fileID: 2800000, guid: 598ed4def2fc3594d8a4e7b07c59184e, type: 3}
+    second: {fileID: 2800000, guid: bb9e2c810568674478c3186bdd9e2c8b, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

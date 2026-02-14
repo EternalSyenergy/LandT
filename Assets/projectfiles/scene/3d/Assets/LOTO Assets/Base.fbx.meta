@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: dd77be7f8319b9d44be111e165388a34
+guid: 31b90a26aa555b946a7b5230a857be13
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: White Venetian Plaster Wall
-    second: {fileID: 2100000, guid: a503156e3ad20b2469641fc97309a81f, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: VenetianPlaster-JPG
-    second: {fileID: 2800000, guid: f7c45e14702792f45a5f00a7bbdb32d7, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: VenetianPlaster-NormalDX
-    second: {fileID: 2800000, guid: fbaa86f1c1b8a804c84c4c3cd1856e9e, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: VenetianPlaster-Roughness
-    second: {fileID: 2800000, guid: 4afcab8749f216f41a165b34f8a649e5, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
