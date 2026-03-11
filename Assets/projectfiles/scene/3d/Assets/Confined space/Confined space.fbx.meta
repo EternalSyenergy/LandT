@@ -42,18 +42,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Red painted damaged metal.001
-    second: {fileID: 2100000, guid: b360ed8646d729047ac33b6b2cf18c71, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Rusted Metal
     second: {fileID: 2100000, guid: 3e9c18f1eb05b5548be67e4d4e350f2c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Scaffold.001
-    second: {fileID: 2100000, guid: d98575ee6824eae42ab2875855997cb7, type: 2}
+      name: Steel Damaged, Scratched and Smudged
+    second: {fileID: 2100000, guid: 310c9388112a0ef49af1292c359afcc3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -72,83 +67,88 @@ ModelImporter:
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: 36377748b9f04cf19dc32a32f17f36ee__Scafold_D
-    second: {fileID: 2800000, guid: d9798f6c65cbf914198e3d07c27d907f, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
       name: 4b44c2c3393f4c789d66e83d89b9fe6a_RGB_tank__mat_Base_color_1001
-    second: {fileID: 2800000, guid: a23428e9464a4d649bc930ae20a35fa1, type: 3}
+    second: {fileID: 2800000, guid: 280c25c83f3b0a8479d40755430c3f4a, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: 750aae4366b84d2893f6fa0ec335b4d3_N_tank__mat_Normal_OpenGL_1001
-    second: {fileID: 2800000, guid: 65bb1c60ece59ae4bbb79657cbb5ecff, type: 3}
+    second: {fileID: 2800000, guid: dceb2b9e375980d409d451d5704183a1, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Image_0.004
-    second: {fileID: 2800000, guid: 09a690232f9d497498a9c6f2847bcec8, type: 3}
+    second: {fileID: 2800000, guid: 2b0f66dd412dffd4cb78e97470fb25d8, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Image_3.004
-    second: {fileID: 2800000, guid: 963047c9b9861da4ba07cef94d27907c, type: 3}
+    second: {fileID: 2800000, guid: 829ea64b0ae4c3844a230d642dab2c80, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Image_6.003
-    second: {fileID: 2800000, guid: 77c7b49632b8539459d19505acdc5211, type: 3}
+    second: {fileID: 2800000, guid: 380de7d7834d51244bee84172a52a622, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Metal_Rough_01_basecolor
-    second: {fileID: 2800000, guid: c98b6a098dbb6fc459d0034f3423dfb8, type: 3}
+    second: {fileID: 2800000, guid: a85b15cedec1e6842b257eeaeca69a07, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Metal_Rough_01_metallic
-    second: {fileID: 2800000, guid: 18eab8dc01fb5b24188313ffef035618, type: 3}
+    second: {fileID: 2800000, guid: 9435b244cce49234185a1305ceb30267, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: b61a2d1dc8694f91bd9308e736371b0d__Scafold_N
-    second: {fileID: 2800000, guid: 2d330020844abd84884297da3692d665, type: 3}
+      name: Steel Damaged Scratched and Smudged_BaseColor
+    second: {fileID: 2800000, guid: a56554ab73b53a0468a55526b041db60, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Steel Damaged Scratched and Smudged_Metallic
+    second: {fileID: 2800000, guid: d855ff9b60936e34ba296e84111cda72, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Steel Damaged Scratched and Smudged_Roughness
+    second: {fileID: 2800000, guid: eaab3ebeeeaeb9f4f88fc4b6a684d04f, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: metal-6-diffuse
-    second: {fileID: 2800000, guid: 07dbe6754f2ac0a4d9120a07d2366ad5, type: 3}
+    second: {fileID: 2800000, guid: 705277b831736df468f2090208162aed, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: metal-6_metal
-    second: {fileID: 2800000, guid: 3c7fb551a8562ad4187cef0bda52ebfb, type: 3}
+    second: {fileID: 2800000, guid: 1cd074f736e55a242b179497dc8dd4b9, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: metal-6_smooth
-    second: {fileID: 2800000, guid: 77b03c45a93bec34481ff2b4518e8ff1, type: 3}
+    second: {fileID: 2800000, guid: 8e0355eb2dd35e9479986a6bb357b74e, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: metal04_diffuse
-    second: {fileID: 2800000, guid: abc23105d5673ac46a1c647929b1236a, type: 3}
+    second: {fileID: 2800000, guid: 827ac83c7140ecf42b275c3725ffd49d, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: metal_diffuse
-    second: {fileID: 2800000, guid: 900f121781ab44a40baaf313251db3ad, type: 3}
+    second: {fileID: 2800000, guid: 3677e2fb050688d4a945a9cc7fb41553, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: metal_metallic
-    second: {fileID: 2800000, guid: 36a54fedccdb33946a41935aaf972c54, type: 3}
+    second: {fileID: 2800000, guid: 7ed31812faf661c4eac09f010f9a2661, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: metal_normal_opengl
-    second: {fileID: 2800000, guid: b7bf98d2784ddcf468f8c89450df0c57, type: 3}
+    second: {fileID: 2800000, guid: a3241424c4cc62e49ba23cc71cb8f26b, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
