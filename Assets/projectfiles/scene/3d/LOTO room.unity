@@ -620,6 +620,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: b321f5b1f2051864c9d05ee9c7338a63, type: 2}
+    - target: {fileID: 8821623529969584324, guid: 12eee8631d51abe4bbebaebb10243478, type: 3}
+      propertyPath: m_Name
+      value: Lockout tag
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
