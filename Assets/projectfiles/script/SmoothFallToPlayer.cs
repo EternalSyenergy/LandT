@@ -99,6 +99,15 @@ public class SmoothFallToPlayer : MonoBehaviour
         }
     }
 
+    public void updateFallObjectPoint()
+    {
+
+        if (GameManager.Instance.impactPlayerInstance == null)
+            return;
+
+        player = GameManager.Instance.impactPlayerInstance.gameObject.transform.GetChild(0);
+
+    }
 
     void OnDrawGizmos()
     {

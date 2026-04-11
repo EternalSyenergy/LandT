@@ -29,8 +29,11 @@ public class OVRHandTrackingLadderClimbSticky : MonoBehaviour
 
     void Update()
     {
-        HandleHand(leftOVRHand, leftHand, leftTarget, ref leftGrabbing, ref lastLeftPos, ref leftGrabPoint);
-        HandleHand(rightOVRHand, rightHand, rightTarget, ref rightGrabbing, ref lastRightPos, ref rightGrabPoint);
+        //HandleHand(leftOVRHand, leftHand, leftTarget, ref leftGrabbing, ref lastLeftPos, ref leftGrabPoint);
+        //HandleHand(rightOVRHand, rightHand, rightTarget, ref rightGrabbing, ref lastRightPos, ref rightGrabPoint);
+
+        HandleHand(leftOVRHand, leftHand, ref leftGrabbing, ref lastLeftPos);
+        HandleHand(rightOVRHand, rightHand, ref rightGrabbing, ref lastRightPos);
     }
 
     void HandleHand(OVRHand ovrHand, Transform handTransform, Transform target, ref bool grabbing, ref Vector3 lastPos, ref Vector3 grabPoint)
@@ -60,6 +63,51 @@ public class OVRHandTrackingLadderClimbSticky : MonoBehaviour
                 handTransform.position = Vector3.Lerp(handTransform.position, grabPoint, Time.deltaTime * stickStrength);
 
                 lastPos = handTransform.position;
+            }
+        }
+        else
+        {
+            grabbing = false;
+        }
+    }
+    void HandleHand(
+    OVRHand ovrHand,
+    Transform handTransform,
+    ref bool grabbing,
+    ref Vector3 lastPos)
+    {
+        if (ovrHand == null || handTransform == null) return;
+
+        float pinchStrength = ovrHand.GetFingerPinchStrength(OVRHand.HandFinger.Index);
+        bool isPinching = pinchStrength > pinchThreshold;
+        bool nearLadder = Physics.CheckSphere(handTransform.position, grabRadius, ladderMask);
+
+        if (isPinching && nearLadder)
+        {
+            if (!grabbing)
+            {
+                // Start grabbing
+                grabbing = true;
+                lastPos = handTransform.position;
+            }
+            else
+            {
+                Vector3 currentPos = handTransform.position;
+
+                // Calculate movement delta
+                Vector3 delta = lastPos - currentPos;
+
+                // Optional: Only allow vertical climbing
+                delta.x = 0f;
+                delta.z = 0f;
+
+                // Deadzone to prevent micro jitter
+                if (delta.magnitude > 0.0005f)
+                {
+                    playerRig.position += delta * climbMultiplier;
+                }
+
+                lastPos = currentPos;
             }
         }
         else

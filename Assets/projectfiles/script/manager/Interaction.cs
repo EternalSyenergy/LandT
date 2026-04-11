@@ -200,6 +200,8 @@ public class Interaction : MonoBehaviour
         GameManager.Instance.TeleportPlayer(temp, false);
     }
 
+
+
     #endregion
 
     #region run time add interaction
@@ -278,16 +280,37 @@ public class Interaction : MonoBehaviour
         switch (temp)
         {
             case "s":
+                UiManager.instance.RightWrongUi.uiLocator.ishead = true;
                 UiManager.instance.RightWrongUi.obj.SetPositionAndRotation(UiManager.instance.playeUiRef.straight.position, UiManager.instance.playeUiRef.straight.rotation);
                 break;
             case "r":
+                UiManager.instance.RightWrongUi.uiLocator.ishead = true;
                 UiManager.instance.RightWrongUi.obj.SetPositionAndRotation(UiManager.instance.playeUiRef.right.position, UiManager.instance.playeUiRef.right.rotation);
                 break;
             case "l":
+                UiManager.instance.RightWrongUi.uiLocator.ishead = true;
                 UiManager.instance.RightWrongUi.obj.SetPositionAndRotation(UiManager.instance.playeUiRef.left.position, UiManager.instance.playeUiRef.left.rotation);
                 break;
             case "d":
+                UiManager.instance.RightWrongUi.uiLocator.ishead = true;
                 UiManager.instance.RightWrongUi.obj.SetPositionAndRotation(UiManager.instance.playeUiRef.down.position, UiManager.instance.playeUiRef.down.rotation);
+                break;
+
+            case "i":
+                UiManager.instance.RightWrongUi.uiLocator.ishead = false;
+
+                if (UiManager.instance.instructorUi.instructorUiType == "r")
+                {
+
+                    UiManager.instance.RightWrongUi.obj.SetPositionAndRotation(UiManager.instance.instructorUi.instructorUiLocatorR.position, UiManager.instance.instructorUi.instructorUiLocatorR.rotation);
+
+                }
+                else
+                {
+                    UiManager.instance.RightWrongUi.obj.SetPositionAndRotation(UiManager.instance.instructorUi.instructorUiLocator.position, UiManager.instance.instructorUi.instructorUiLocator.rotation);
+
+                }
+
                 break;
 
             default:
@@ -310,11 +333,91 @@ public class Interaction : MonoBehaviour
     }
     //end
 
+    public void InstructorUiType(string temp)
+    {
+        UiManager.instance.instructorUi.instructorUiType = temp;
+    }
     public void InstructorUiSetActive(bool temp)
     {
-        UiManager.instance.TransformInstructorUiPos(null);
+        //UiManager.instance.TransformInstructorUiPosNew(null);
+        UiManager.instance.TransformInstructorUiPosNew();
 
         UiManager.instance.instructorUi.obj.SetActive(temp);
+    }
+
+
+    public void updateSettingImage() {
+
+        if (startEvent.settingImage != null)
+            UiManager.instance.settingUpUi.Image.sprite = startEvent.settingImage;
+    }
+
+    public void updateSettingContent()
+    {
+
+        int langIndex = GameManager.Instance.Languages;
+
+        if (langIndex >= 0 && langIndex < startEvent.content.Count)
+        {
+            UiManager.instance.settingUpUi.content.text =
+                startEvent.content[langIndex];
+        }
+    }
+
+    public void UpdateSettingUpUiPlayer(string temp)
+    {
+
+        switch (temp)
+        {
+            case "s":
+                UiManager.instance.settingUpUi.uiLocator.ishead = true;
+                UiManager.instance.settingUpUi.obj.SetPositionAndRotation(UiManager.instance.playeUiRef.straight.position, UiManager.instance.playeUiRef.straight.rotation);
+                break;
+            case "r":
+                UiManager.instance.settingUpUi.uiLocator.ishead = true;
+                UiManager.instance.settingUpUi.obj.SetPositionAndRotation(UiManager.instance.playeUiRef.right.position, UiManager.instance.playeUiRef.right.rotation);
+                break;
+            case "l":
+                UiManager.instance.settingUpUi.uiLocator.ishead = true;
+                UiManager.instance.settingUpUi.obj.SetPositionAndRotation(UiManager.instance.playeUiRef.left.position, UiManager.instance.playeUiRef.left.rotation);
+                break;
+            case "d":
+                UiManager.instance.settingUpUi.uiLocator.ishead = true;
+                UiManager.instance.settingUpUi.obj.SetPositionAndRotation(UiManager.instance.playeUiRef.down.position, UiManager.instance.playeUiRef.down.rotation);
+                break;
+
+            case "i":
+                UiManager.instance.settingUpUi.uiLocator.ishead = false;
+
+                if (UiManager.instance.instructorUi.instructorUiType == "r")
+                {
+                    UiManager.instance.settingUpUi.obj.SetPositionAndRotation(UiManager.instance.instructorUi.instructorUiLocatorR.position, UiManager.instance.instructorUi.instructorUiLocatorR.rotation);
+
+                }
+                else
+                {
+                    UiManager.instance.settingUpUi.obj.SetPositionAndRotation(UiManager.instance.instructorUi.instructorUiLocator.position, UiManager.instance.instructorUi.instructorUiLocator.rotation);
+
+                }
+
+
+                break;
+
+            default:
+                break;
+        }
+
+    }
+
+
+    public void SettingupUIActive(bool temp)
+    {
+
+
+        UiManager.instance.settingUpUi.obj.gameObject.SetActive(temp);
+
+
+
     }
     #endregion
 
@@ -384,6 +487,8 @@ public class startEvent
     public VideoClip vidUi;
 
 
+    [Header("setting up ui")]
+    public Sprite settingImage;
 
 }
 

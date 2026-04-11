@@ -73,98 +73,100 @@ public class OVRHandTrackingLadderClimbSmooth : MonoBehaviour
 
 
 
-    bool HandleHandOld(
-    OVRHand ovrHand,
-    Transform hand,
-    Transform target,
-    ref bool grabbing,
-    ref Vector3 grabPoint,
-    bool isLeft,
-    Transform ikTarget // the IK hand target (like leftHandIK),
+//    bool HandleHandOld(
+//    OVRHand ovrHand,
+//    Transform hand,
+//    Transform target,
+//    ref bool grabbing,
+//    ref Vector3 grabPoint,
+//    bool isLeft,
+//    Transform ikTarget // the IK hand target (like leftHandIK),
     
 
-)
-    {
-        if (ovrHand == null || hand == null) return false;
+//)
+//    {
+//        if (ovrHand == null || hand == null) return false;
 
-        // --- Adaptive smoothing setup ---
-        ref Vector3 smoothedHand = ref (isLeft ? ref smoothedLeft : ref smoothedRight);
+//        // --- Adaptive smoothing setup ---
+//        ref Vector3 smoothedHand = ref (isLeft ? ref smoothedLeft : ref smoothedRight);
 
-        if (smoothedHand == Vector3.zero)
-            smoothedHand = hand.position;
+//        if (smoothedHand == Vector3.zero)
+//            smoothedHand = hand.position;
 
-        // Calculate hand velocity to adapt smoothing
-        Vector3 rawHand = hand.position;
-        Vector3 handVelocity = (rawHand - smoothedHand) / Mathf.Max(Time.deltaTime, 0.0001f);
-        float speed = handVelocity.magnitude;
+//        // Calculate hand velocity to adapt smoothing
+//        Vector3 rawHand = hand.position;
+//        Vector3 handVelocity = (rawHand - smoothedHand) / Mathf.Max(Time.deltaTime, 0.0001f);
+//        float speed = handVelocity.magnitude;
 
-        // Adaptive smoothing: less lag for fast hand movement
-        float adaptiveSmooth = Mathf.Lerp(slowAmount, slowAmount * 6f, Mathf.Clamp01(speed / 1.5f));
+//        // Adaptive smoothing: less lag for fast hand movement
+//        float adaptiveSmooth = Mathf.Lerp(slowAmount, slowAmount * 6f, Mathf.Clamp01(speed / 1.5f));
 
-        // Blend hand position
-        smoothedHand = Vector3.Lerp(smoothedHand, rawHand, Time.deltaTime * adaptiveSmooth);
-        // --- End smoothing ---
+//        // Blend hand position
+//        smoothedHand = Vector3.Lerp(smoothedHand, rawHand, Time.deltaTime * adaptiveSmooth);
+//        // --- End smoothing ---
 
-        float pinch = ovrHand.GetFingerPinchStrength(OVRHand.HandFinger.Index);
-        bool pinching = pinch > pinchThreshold;
-        bool nearLadder = Physics.CheckSphere(smoothedHand, grabRadius, ladderMask);
+//        float pinch = ovrHand.GetFingerPinchStrength(OVRHand.HandFinger.Index);
+//        bool pinching = pinch > pinchThreshold;
+//        bool nearLadder = Physics.CheckSphere(smoothedHand, grabRadius, ladderMask);
 
    
     
 
-        if (pinching && nearLadder)
-        {
-            if (!grabbing)
-            {
-                grabbing = true;
-                grabPoint = target ? target.position : smoothedHand;
+//        if (pinching && nearLadder)
+//        {
+//            if (!grabbing)
+//            {
+//                grabbing = true;
+//                grabPoint = target ? target.position : smoothedHand;
 
-                // Mark latest grabbing hand
-                lastActiveLeft = isLeft;
+//                // Mark latest grabbing hand
+//                lastActiveLeft = isLeft;
 
-                // Lock the IK target at the grab point immediately
-                if (ikTarget)
-                    ikTarget.position = grabPoint;
-            }
+//                // Lock the IK target at the grab point immediately
+//                if (ikTarget)
+//                    ikTarget.position = grabPoint;
+//            }
 
-            Vector3 handDelta = grabPoint - smoothedHand; // Use smoothed movement
-            Vector3 moveTarget = playerRig.position + handDelta * climbMultiplier;
+//            Vector3 handDelta = grabPoint - smoothedHand; // Use smoothed movement
+//            Vector3 moveTarget = playerRig.position + handDelta * climbMultiplier;
 
-            // Move the rig only for the most recently active hand
-            if ((isLeft && lastActiveLeft) || (!isLeft && !lastActiveLeft))
-            {
-                if (ladderCenter)
-                {
-                    moveTarget.x = Mathf.Clamp(moveTarget.x, ladderCenter.position.x + minX, ladderCenter.position.x + maxX);
-                    moveTarget.z = Mathf.Clamp(moveTarget.z, ladderCenter.position.z + minZ, ladderCenter.position.z + maxZ);
-                }
+//            // Move the rig only for the most recently active hand
+//            if ((isLeft && lastActiveLeft) || (!isLeft && !lastActiveLeft))
+//            {
+//                if (ladderCenter)
+//                {
+//                    moveTarget.x = Mathf.Clamp(moveTarget.x, ladderCenter.position.x + minX, ladderCenter.position.x + maxX);
+//                    moveTarget.z = Mathf.Clamp(moveTarget.z, ladderCenter.position.z + minZ, ladderCenter.position.z + maxZ);
+//                }
 
-                // Rig movement with consistent damping
-                playerRig.position = Vector3.Lerp(playerRig.position, moveTarget, 0.25f);
-            }
+//                // Rig movement with consistent damping
+//                playerRig.position = Vector3.Lerp(playerRig.position, moveTarget, 0.25f);
+//            }
 
-            // Keep the IK hand visually anchored
-            if (ikTarget)
-                ikTarget.position = Vector3.Lerp(ikTarget.position, grabPoint, Time.deltaTime * stickStrength);
+//            // Keep the IK hand visually anchored
+//            if (ikTarget)
+//                ikTarget.position = Vector3.Lerp(ikTarget.position, grabPoint, Time.deltaTime * stickStrength);
 
-            return true;
-        }
-        else
-        {
-            if (grabbing)
-            {
-                grabbing = false;
+//            return true;
+//        }
+//        else
+//        {
+//            if (grabbing)
+//            {
+//                grabbing = false;
 
-                // Release hand — allow IK target to follow tracking again
-                if (ikTarget)
-                    ikTarget.position = smoothedHand;
-            }
+//                // Release hand — allow IK target to follow tracking again
+//                if (ikTarget)
+//                    ikTarget.position = smoothedHand;
+//            }
 
-            return false;
-        }
-    }
+//            return false;
+//        }
+//    }
 
 
+
+    public float Startdistance;
 
     bool HandleHand(
     OVRHand ovrHand,
@@ -199,7 +201,7 @@ public class OVRHandTrackingLadderClimbSmooth : MonoBehaviour
         LadderPoint nearestPoint = null;
         Collider[] hits = Physics.OverlapSphere(smoothedHand, grabRadius, ladderMask);
         float closest = float.MaxValue;
-
+        
         foreach (var hit in hits)
         {
             LadderPoint lp = hit.GetComponent<LadderPoint>();
@@ -224,7 +226,6 @@ public class OVRHandTrackingLadderClimbSmooth : MonoBehaviour
 
                 // Use the LadderPoint's Y position only; keep player’s XZ
                 Vector3 anchor = nearestPoint.handPoint.position;
-                //grabPoint = new Vector3(smoothedHand.x, anchor.y, smoothedHand.z);
                 grabPoint = new Vector3(anchor.x, anchor.y, smoothedHand.z);
 
 
@@ -272,7 +273,10 @@ public class OVRHandTrackingLadderClimbSmooth : MonoBehaviour
 
 
 
+    public void updateLaderCenter(Transform temp) {
 
+        ladderCenter = temp;
+    }
 
 
     private void OnDisable()

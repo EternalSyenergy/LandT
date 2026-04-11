@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
     public List<Transform> quizObject;
 
     public Image bloodOverlay;
+
+    public Bulp bulp;
+
+    public GameObject directionalLight;
     public void Awake()
     {
         Instance = this;
@@ -45,12 +49,25 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         fixteleportUpdate();
+
+        PlayerData.trackHarness();
+        PlayerData.TrackWelding();
+        PlayerData.TrackLockout();
+
     }
     private void FixedUpdate()
     {
         EyeInteraction();
     }
 
+    private void LateUpdate()
+    {
+        UpdateLeftHandHookTip();
+        UpdateRightHandHookTip();
+
+        UpdateLeftHandHookWallTip();
+        UpdateRightHandHookWallTip();
+    }
     void EyeInteraction()
     {
         RaycastHit hit;
@@ -91,6 +108,8 @@ public class GameManager : MonoBehaviour
     public OVRScreenFade screenFade;       // OVRScreenFade component on CenterEyeAnchor
     public float fadeDuration = 0.3f;
     public GameObject RigPlayer;
+    public GameObject impactPlayer;
+    public ImpactCharacter impactPlayerInstance;
     public float playerMoveSpeed = 1f;
 
     private bool isRotating = false;
@@ -121,7 +140,10 @@ public class GameManager : MonoBehaviour
             StartCoroutine(ZoomOutCoroutine(target));
     }
 
-
+    public void updateLanguague(int temp)
+    {
+        Languages = temp;
+    }
 
     private IEnumerator RotatePlayer(Vector3 eulerTarget)
     {
@@ -260,6 +282,11 @@ public class GameManager : MonoBehaviour
 
         // Fade in
         screenFade.FadeIn();
+
+        PlayerData.leftLegSolver.ResetFootInstant();
+        PlayerData.rightLegSolver.ResetFootInstant();
+
+
     }
 
 
@@ -365,6 +392,10 @@ public class GameManager : MonoBehaviour
     public void TeleportInstructor(Transform target)
     {
         instructor.transform.SetPositionAndRotation(target.position, target.rotation);
+
+        Transform child = instructor.transform.GetChild(3);
+        child.localRotation = Quaternion.identity;
+
     }
 
     private Coroutine moveCoroutine;
@@ -458,28 +489,147 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void InitiateRigPlayer()
+    public void InitiateRigPlayer(bool rig=true)
     {
-        Transform playerRoot = PlayerData.player.transform;
-        playerRoot.position = new Vector3(playerRoot.position.x, playerRoot.position.y + 0.51f, playerRoot.position.z);
-        if (playerRoot == null || RigPlayer == null)
+
+        if (rig)
         {
-            Debug.LogWarning("Player root or ragdoll prefab not assigned.");
+            Transform playerRoot = PlayerData.player.transform;
+            playerRoot.position = new Vector3(playerRoot.position.x, playerRoot.position.y + 0.51f, playerRoot.position.z);
+            if (playerRoot == null || RigPlayer == null)
+            {
+                Debug.LogWarning("Player root or ragdoll prefab not assigned.");
+                return;
+            }
+
+            // Get the spawn position & rotation from the current player
+            Vector3 spawnPos = playerRoot.position;
+            Quaternion spawnRot = playerRoot.rotation;
+
+            // Spawn ragdoll
+            GameObject ragdollInstance = Instantiate(RigPlayer, spawnPos, spawnRot);
+
+            impactPlayerInstance = ragdollInstance.GetComponent<ImpactCharacter>();
+            // Optionally copy pose if your ragdoll has matching bones
+            //CopyPlayerPoseToRagdoll(ragdollInstance);
+            Destroy(ragdollInstance, 10f);
+
+        }
+        else
+        {
+
+
+
+            Transform playerRoot = PlayerData.player.transform;
+            playerRoot.position = new Vector3(playerRoot.position.x, playerRoot.position.y + 0f, playerRoot.position.z);
+            if (playerRoot == null || impactPlayer == null)
+            {
+                Debug.LogWarning("Player root or ragdoll prefab not assigned.");
+                return;
+            }
+
+            // Get the spawn position & rotation from the current player
+            Vector3 spawnPos = playerRoot.position;
+            Quaternion spawnRot = playerRoot.rotation;
+
+            // Spawn ragdoll
+            GameObject ragdollInstance = Instantiate(impactPlayer, spawnPos, spawnRot);
+
+            impactPlayerInstance= ragdollInstance.GetComponent<ImpactCharacter>();
+            // Optionally copy pose if your ragdoll has matching bones
+            //CopyPlayerPoseToRagdoll(ragdollInstance);
+            Destroy(ragdollInstance, 10f);
+
+        }
+
+    }
+
+
+    public void impactPlayerType(string type)
+    {
+
+        if (impactPlayerInstance == null)
+        {
             return;
         }
 
-        // Get the spawn position & rotation from the current player
-        Vector3 spawnPos = playerRoot.position;
-        Quaternion spawnRot = playerRoot.rotation;
+     
 
-        // Spawn ragdoll
-        GameObject ragdollInstance = Instantiate(RigPlayer, spawnPos, spawnRot);
 
-        // Optionally copy pose if your ragdoll has matching bones
-        //CopyPlayerPoseToRagdoll(ragdollInstance);
-        Destroy(ragdollInstance, 10f);
+        switch (type)
+        {
+            case "h":
+
+                impactPlayerInstance. helmet.SetActive(false);
+                impactPlayerInstance.goggles.SetActive(false);
+                break;
+
+            case "s":
+
+                impactPlayerInstance.helmet.SetActive(true);
+                impactPlayerInstance.goggles.SetActive(false);
+
+                break;
+
+            case "m":
+                impactPlayerInstance.helmet.SetActive(true);
+                impactPlayerInstance.shoe.SetActive(true);
+                impactPlayerInstance.mask.SetActive(false);
+                break;
+
+            case "g":
+                //goggles.SetActive(false);
+                impactPlayerInstance.helmet.SetActive(true);
+                impactPlayerInstance.shoe.SetActive(true); 
+                impactPlayerInstance.mask.SetActive(true);
+                impactPlayerInstance.goggles.SetActive(false);
+
+                break;
+
+            case "e":
+                impactPlayerInstance.helmet.SetActive(true);
+                impactPlayerInstance.shoe.SetActive(true);
+                impactPlayerInstance.mask.SetActive(true);
+                impactPlayerInstance.goggles.SetActive(true);
+                impactPlayerInstance.earPlug.SetActive(false);
+
+                break;
+
+
+            case "ha":
+                //impactPlayerInstance.helmet.SetActive(true);
+                //impactPlayerInstance.shoe.SetActive(true);
+                //impactPlayerInstance.mask.SetActive(true);
+                //impactPlayerInstance.goggles.SetActive(true);
+                //impactPlayerInstance.earPlug.SetActive(false);
+                impactPlayerInstance.harness.SetActive(false);
+
+                break;
+            default:
+
+                break;
+        }
+
+
     }
 
+    public void InitiateRigPlayerAnim(string type) 
+    {
+
+
+
+        if (impactPlayerInstance==null)
+        {
+            return;
+        }
+
+
+        impactPlayerInstance.PlayAnim(type);
+
+
+
+
+    }
 
     #endregion
 
@@ -531,7 +681,236 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(ToggleBloodEffect(temp));
     }
+
+
+
     #endregion
+
+
+    #region Harness
+
+    // =========================
+    // Harness Enable / Disable
+    // =========================
+    public void EnableHarness(bool value)
+    {
+        if (PlayerData. playerHarness != null)
+            PlayerData.playerHarness.SetActive(value);
+    }
+
+    // =========================
+    // LEFT HAND
+    // =========================
+
+    // Call when left hook starts (button press / hit / attach)
+    //public void HarnessLeftHookTipMove(Transform target)
+    //{
+    //    PlayerData.leftTarget = target;
+    //    PlayerData.isHarnessLeft = true;
+    //}
+
+    // Called every LateUpdate
+    private void UpdateLeftHandHookTip()
+    {
+        if (!PlayerData.isHarnessLeft || PlayerData.leftTarget == null || PlayerData.harnessLeftTip == null)
+            return;
+
+        PlayerData.harnessLeftTip.position = PlayerData.leftTarget.position;
+        PlayerData.harnessLeftTip.rotation = PlayerData.leftTarget.rotation;
+    }
+
+    private void UpdateLeftHandHookWallTip()
+    {
+        if (PlayerData.leftWallTarget == null || PlayerData.harnessLeftTip == null)
+            return;
+
+        PlayerData.harnessLeftTip.position = PlayerData.leftWallTarget.position;
+        PlayerData.harnessLeftTip.rotation = PlayerData.leftWallTarget.rotation;
+    }
+
+    // Call to release / cancel left hook
+    public void UpdateLeftHandHookPosition(Transform returnTarget)
+    {
+        PlayerData.isHarnessLeft = false;
+        PlayerData.leftWallTarget = returnTarget;
+
+        if (returnTarget != null && PlayerData.harnessLeftTip != null)
+        {
+            PlayerData.harnessLeftTip.position = returnTarget.position;
+            PlayerData.harnessLeftTip.rotation = returnTarget.rotation;
+        }
+    }
+
+    // =========================
+    // RIGHT HAND
+    // =========================
+
+ 
+    // Called every LateUpdate
+    private void UpdateRightHandHookTip()
+    {
+        if (!PlayerData.isHarnessRight || PlayerData.rightTarget == null || PlayerData.harnessRightTip == null)
+            return;
+
+        PlayerData.harnessRightTip.position = PlayerData.rightTarget.position;
+        PlayerData.harnessRightTip.rotation = PlayerData.rightTarget.rotation;
+    }
+
+    private void UpdateRightHandHookWallTip()
+    {
+        if (PlayerData.rightWallTarget == null || PlayerData.harnessRightTip == null)
+            return;
+
+        PlayerData.harnessRightTip.position = PlayerData.rightWallTarget.position;
+        PlayerData.harnessRightTip.rotation = PlayerData.rightWallTarget.rotation;
+    }
+    // Call to release / cancel right hook
+    public void UpdateRightHandHookPosition(Transform returnTarget)
+    {
+        PlayerData.isHarnessRight = false;
+
+        PlayerData.rightWallTarget= returnTarget;
+
+        if (returnTarget != null && PlayerData.harnessRightTip != null)
+        {
+            PlayerData.harnessRightTip.position = returnTarget.position;
+            PlayerData.harnessRightTip.rotation = returnTarget.rotation;
+        }
+    }
+
+
+    public void UpdateLeftHookInHand(bool temp )
+    {
+        PlayerData.isHarnessLeft = temp;
+        PlayerData.leftWallTarget= null;
+    }
+
+    public void UpdateRightHookInHand(bool temp)
+    {
+        PlayerData.isHarnessRight = temp;
+        PlayerData.rightWallTarget = null;
+
+    }
+    #endregion
+
+
+    #region welding 
+
+
+    public void updateIsWeldinginHand(bool temp)
+    {
+
+        PlayerData.isWeldingOnhand = temp;
+    }
+    public void updateWeldingHandlerObj(Transform temp)
+    {
+
+        PlayerData.weldingObject = temp;
+    }
+
+
+
+    #endregion
+
+
+    #region lockoutTagout 
+
+
+    public void updatelockoutOnhand(bool temp)
+    {
+
+        PlayerData.isLockoutOnhand = temp;
+    }
+    public void updatelockoutObject(Transform temp)
+    {
+
+        PlayerData.lockoutObject = temp;
+    }
+
+
+
+    #endregion
+
+    #region
+
+
+    public void isBulpMove(bool temp)
+    {
+        bulp.isbulpMove = temp;
+
+    }
+
+    public void updatebulpObject(Transform temp)
+    {
+
+        bulp.bulpObj = temp;
+    }
+
+    public void upateBulpEndpos(Transform temp)
+    {
+        bulp.bulpEndPos = temp;
+    }
+
+    public void bulpMOvetopoint()
+    {
+        if (bulp.isbulpMove)
+        {
+            if (bulp.bulpObj != null && bulp.bulpEndPos != null)
+            {
+                StartCoroutine(MoveWithShake(bulp.bulpObj.transform, bulp.bulpEndPos.position));
+            }
+        }
+    }
+
+    IEnumerator MoveWithShake(Transform obj, Vector3 targetPos)
+    {
+        float duration = 1.5f;          // total movement time
+        float shakeAmount = 0.2f;       // how far left-right
+        float shakeSpeed = 20f;         // how fast shaking
+
+        Vector3 startPos = obj.position;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+
+            // Smooth movement toward target
+            Vector3 movePos = Vector3.Lerp(startPos, targetPos, t);
+
+            // Left-right shake (X axis)
+            float shakeOffset = Mathf.Sin(time * shakeSpeed) * shakeAmount * (1 - t);
+            movePos.x += shakeOffset;
+
+            obj.position = movePos;
+
+            yield return null;
+        }
+
+        obj.position = targetPos;
+    }
+
+    #endregion
+
+
+    ///dark abient
+    public void updateDarkAmbientLight(bool temp)
+    {
+        if (temp)
+        {
+            directionalLight.SetActive(false);
+            RenderSettings.ambientIntensity = 0.5f;
+            RenderSettings.ambientIntensity = 0.4f;
+        }
+        else
+        {
+            directionalLight.SetActive(true);
+            RenderSettings.ambientIntensity = 1.2f;
+            RenderSettings.ambientIntensity = 0.9f;
+
+        }
+    }
 }
 
 [System.Serializable]
@@ -549,6 +928,80 @@ public class PlayerData
     public GameObject fallPlayerSKin;
 
     public Rigidbody playerRb;
+
+    public IKFootSolver leftLegSolver;
+    public IKFootSolver rightLegSolver;
+
+
+    [Header("Harness Mechanism")]
+    public GameObject playerHarness;
+    public Transform playerHarnessTractPos;
+    [Header("Hook Tips")]
+    public Transform harnessLeftTip;
+    public Transform harnessRightTip;
+    [Header("State")]
+    public bool isHarnessLeft;
+    public bool isHarnessRight;
+    // Internal targets
+    public Transform leftTarget;
+    public Transform rightTarget;
+
+    // Internal targets
+    public Transform leftWallTarget;
+    public Transform rightWallTarget;
+
+
+
+    [Header("Welding ")]
+    public Transform weldingHandPos;
+    public Transform weldingObject;
+    public bool isWeldingOnhand;
+    public void TrackWelding()
+    {
+
+        if (isWeldingOnhand)
+        {
+
+            if (weldingObject != null && weldingObject != null)
+            {
+
+                weldingObject.transform.SetPositionAndRotation(weldingHandPos.position, weldingHandPos.rotation);
+
+            }
+
+        }
+
+    }
+
+    [Header("lockout ")]
+    public Transform lockoutHandPos;
+    public Transform lockoutObject;
+    public bool isLockoutOnhand;
+
+    public void TrackLockout()
+    {
+
+        if (isLockoutOnhand)
+        {
+
+            if (lockoutObject != null)
+            {
+
+                lockoutObject.transform.SetPositionAndRotation(lockoutHandPos.position, lockoutHandPos.rotation);
+
+            }
+
+        }
+
+    }
+
+
+    public void trackHarness()
+    {
+        playerHarness.transform.SetPositionAndRotation(playerHarnessTractPos.position, playerHarnessTractPos.rotation);
+    }
+
+ 
 }
 
 [System.Serializable]
@@ -596,6 +1049,16 @@ public class GrabPos
 public class SfxList
 {
     public AudioClip RightWrongUiSFx;
+
+}
+
+
+[System.Serializable]
+public class Bulp
+{
+    public Transform bulpObj;
+    public Transform bulpEndPos;
+    public bool isbulpMove;
 
 }
 

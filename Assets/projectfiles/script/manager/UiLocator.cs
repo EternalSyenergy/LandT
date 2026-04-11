@@ -11,6 +11,9 @@ public class UiLocator : MonoBehaviour
     public Transform PlayerclickPos;
   public  float scaleSpeed = .2f;
 
+
+    public float targetScale = 0.05f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,7 +78,7 @@ public class UiLocator : MonoBehaviour
     private IEnumerator ScaleUIRoutine()
     {
         float scale = 0f;
-        float targetScale = 0.05f;
+        //float targetScale = 0.05f;
 
         // Start small
         transform.localScale = Vector3.zero;

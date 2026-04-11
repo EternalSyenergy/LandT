@@ -1,3 +1,4 @@
+using Oculus.Voice.Core.Bindings.Android.PlatformLogger;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,8 @@ public class UiManager : MonoBehaviour
     public UiHandler uiHandler;
     public RightWrongUi RightWrongUi;
     public PlayeUiRef playeUiRef;
+
+    public SettingUpUi settingUpUi;
     private void Awake()
     {
         instance = this;
@@ -28,7 +31,7 @@ public class UiManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        logoupdate();
     }
 
     // Update is called once per frame
@@ -59,6 +62,8 @@ public class UiManager : MonoBehaviour
             instructorUi.obj.transform.SetPositionAndRotation(temp.position, temp.rotation);
 
         }
+
+
         else
         {
             instructorUi.obj.transform.SetPositionAndRotation( instructorUi.instructorUiLocator.position, instructorUi.instructorUiLocator.rotation);
@@ -66,7 +71,22 @@ public class UiManager : MonoBehaviour
         }
     }
 
-   
+    public void TransformInstructorUiPosNew()
+    {
+
+        if (instructorUi.instructorUiType == "r")
+        {
+            instructorUi.obj.transform.SetPositionAndRotation(instructorUi.instructorUiLocatorR.position, instructorUi.instructorUiLocatorR.rotation);
+        }
+        else
+        {
+            instructorUi.obj.transform.SetPositionAndRotation(instructorUi.instructorUiLocator.position, instructorUi.instructorUiLocator.rotation);
+
+        }
+    }
+
+
+
     #endregion
 
 
@@ -74,22 +94,26 @@ public class UiManager : MonoBehaviour
     #region loader setup
 
 
+    Coroutine loaderRoutine;
 
-    public void StartLoading(Sprite Image, string content)
+    public void StartLoading(Sprite image, string content)
     {
-        loaderUi.updateLoader(Image, content);
-        StartCoroutine(fillLoader());
+        loaderUi.updateLoader(image, content);
+
+        if (loaderRoutine != null)
+            StopCoroutine(loaderRoutine);
+
+        loaderRoutine = StartCoroutine(fillLoader());
     }
-
-   
-
     IEnumerator fillLoader()
     {
         float duration = 5f;
         float elapsed = 0f;
+
         loaderUi.LoaderSlider.value = 0f;
         loaderUi.LoaderObject.gameObject.SetActive(true);
         loaderUi.LoaderObject.updateFarUi();
+
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
@@ -99,14 +123,51 @@ public class UiManager : MonoBehaviour
 
         loaderUi.LoaderSlider.value = 1f;
         loaderUi.LoaderObject.gameObject.SetActive(false);
-        StopCoroutine(fillLoader() );
+
+        loaderRoutine = null;
     }
+
+
+    //public void StartLoading(Sprite Image, string content)
+    //{
+    //    loaderUi.updateLoader(Image, content);
+    //    StartCoroutine(fillLoader());
+    //}
+
+
+
+    //IEnumerator fillLoader()
+    //{
+    //    float duration = 5f;
+    //    float elapsed = 0f;
+    //    loaderUi.LoaderSlider.value = 0f;
+    //    loaderUi.LoaderObject.gameObject.SetActive(true);
+    //    loaderUi.LoaderObject.updateFarUi();
+    //    while (elapsed < duration)
+    //    {
+    //        elapsed += Time.deltaTime;
+    //        loaderUi.LoaderSlider.value = Mathf.Clamp01(elapsed / duration);
+    //        yield return null;
+    //    }
+
+    //    loaderUi.LoaderSlider.value = 1f;
+    //    loaderUi.LoaderObject.gameObject.SetActive(false);
+    //    StopCoroutine(fillLoader() );
+    //}
 
     #endregion
 
 
 
+    public void logoupdate() {
+    
+    
+        for(int i = 0; i < logoHandler.logoImage.Count; i++)
+        {
 
+            logoHandler.logoImage[i].sprite=logoHandler.logos[logoHandler.logoCount];
+        }
+    }
 
 
 }
@@ -161,6 +222,8 @@ public class InsturctorUi
     public TMP_Text content;
     public GameObject obj;
     public Transform instructorUiLocator;
+    public Transform instructorUiLocatorR;
+    public string instructorUiType="l";
 }
 
 [System.Serializable]
@@ -170,6 +233,7 @@ public class RightWrongUi
     public Image right;
     public Image wrong;
     public VideoPlayer Vid;
+    public UiLocator uiLocator;
 
 }
 
@@ -190,6 +254,20 @@ public class UiHandler
     //group ui 
 
 }
+
+
+
+[System.Serializable]
+public class SettingUpUi
+{
+    public UiLocator uiLocator;
+    public Transform obj;
+    public TMP_Text heading;
+    public TMP_Text content;
+    public Image Image;
+
+}
+
 
 
 
