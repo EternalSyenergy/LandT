@@ -64,6 +64,7 @@ QualitySettings:
     - GameCoreXboxOne
     - GameCoreScarlett
     - Windows Store Apps
+    - Server
   - serializedVersion: 3
     name: Mobile High
     pixelLightCount: 1
@@ -79,8 +80,8 @@ QualitySettings:
     skinWeights: 2
     globalTextureMipmapLimit: 0
     textureMipmapLimitSettings: []
-    anisotropicTextures: 1
-    antiAliasing: 0
+    anisotropicTextures: 2
+    antiAliasing: 4
     softParticles: 0
     softVegetation: 1
     realtimeReflectionProbes: 0
@@ -102,7 +103,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: 5e6cbd92db86f4b18aec3ed561671858, type: 2}
+    customRenderPipeline: {fileID: 11400000, guid: c4e8aac8fdb99224088153aad648cb7c, type: 2}
     terrainQualityOverrides: 0
     terrainPixelError: 1
     terrainDetailDensityScale: 1
@@ -119,6 +120,7 @@ QualitySettings:
     - GameCoreXboxOne
     - GameCoreScarlett
     - Windows Store Apps
+    - Server
   - serializedVersion: 3
     name: PC Low
     pixelLightCount: 2
@@ -177,6 +179,7 @@ QualitySettings:
     - PS5
     - GameCoreScarlett
     - Windows Store Apps
+    - Server
   - serializedVersion: 3
     name: PC High
     pixelLightCount: 2
@@ -229,6 +232,8 @@ QualitySettings:
     - Android
     - Nintendo Switch
     - iPhone
+    - Standalone
+    - Server
   m_TextureMipmapLimitGroupNames: []
   m_PerPlatformDefaultQuality:
     Android: 1
