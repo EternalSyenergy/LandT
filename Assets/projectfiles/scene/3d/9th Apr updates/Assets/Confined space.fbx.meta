@@ -1,0 +1,384 @@
+fileFormatVersion: 2
+guid: 5ac70baecf538094eb6009fe2509379c
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 1001
+    second: {fileID: 2100000, guid: 9a8cd4e65a95ee2448d2bab33f802f2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 1002
+    second: {fileID: 2100000, guid: f4475b19697871c408072dd3a1a0bbf9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 1003
+    second: {fileID: 2100000, guid: 07be6746de199ea468e6fe7a80fa21a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 3005POR-1024x1024
+    second: {fileID: 2100000, guid: 462e06f9c61d420498d8e4c474f6fa83, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base
+    second: {fileID: 2100000, guid: 4a6499685d3390f49ac88322597449f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black Iron.001
+    second: {fileID: 2100000, guid: b1b517b52b83d9644b63adee5ca63798, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gun Metal.001
+    second: {fileID: 2100000, guid: 1a33b9d71cb53c04f8de9001de3c2756, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gun Metal.002
+    second: {fileID: 2100000, guid: 75b583a0f9e14bf4caee39b9a5afd14a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ladder Grip.001
+    second: {fileID: 2100000, guid: 8ed3e79402c509643908cfa792c6037b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ladder Metal.001
+    second: {fileID: 2100000, guid: fcf8b619ac898b64ca9a22794ced4592, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 81d5aed1911bc064caf33e0fb49c2de9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.015
+    second: {fileID: 2100000, guid: 5156231707c4af043b8bf833438576ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red painted damaged metal
+    second: {fileID: 2100000, guid: 4d5466cf98911aa40ab5edc392199c62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red painted damaged metal.002
+    second: {fileID: 2100000, guid: ced542e11246c814f8dd8d7f11e4844f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rusted Metal
+    second: {fileID: 2100000, guid: 18a11ede307bfba4b998cffded35d36b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Soft Brown Transparent Plastic
+    second: {fileID: 2100000, guid: 8760f10965411e14bbaea0b902c591a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Steel Damaged, Scratched and Smudged
+    second: {fileID: 2100000, guid: 6e370887610c2174795c1e3bea05b161, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Strap
+    second: {fileID: 2100000, guid: f0d3746fccb3f9249912ecc4e4f9b38d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Striped Road Marker.001
+    second: {fileID: 2100000, guid: f87e14c882eae7f4c975d277da1629e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Striped Road Marker.003
+    second: {fileID: 2100000, guid: b9c35a8db58560d46a7659fae1a92405, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Striped Road Marker.005
+    second: {fileID: 2100000, guid: ff1797cbb17ad8b4b8329fce92346f1a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Striped Road Marker.006
+    second: {fileID: 2100000, guid: f6d80b764d9923843839d4bf5ccbe00f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Striped Road Marker.007
+    second: {fileID: 2100000, guid: 1f3f940867853d5499f1ffdd02a85971, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Striped Road Marker.008
+    second: {fileID: 2100000, guid: 29dbc25dbc838644aa123f326369d427, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Striped Road Marker.009
+    second: {fileID: 2100000, guid: a1df52fbd8537bc4da5053e7035c4b97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Yellow painted damaged metal
+    second: {fileID: 2100000, guid: 4060222e9da91b74488cb860bbbecf77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Yellow painted damaged metal.001
+    second: {fileID: 2100000, guid: a473a5e39365d094bbe63da8ef7e9769, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tank__mat.001
+    second: {fileID: 2100000, guid: 47464f2b9051bd94996a1c1affa0dc82, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 3005POR-1024x1024
+    second: {fileID: 2800000, guid: 3b38dba3c48ce0e41810568911978702, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 4b44c2c3393f4c789d66e83d89b9fe6a_RGB_tank__mat_Base_color_1001
+    second: {fileID: 2800000, guid: e00b2969e59d21b45a402f5e25ced31d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 750aae4366b84d2893f6fa0ec335b4d3_N_tank__mat_Normal_OpenGL_1001
+    second: {fileID: 2800000, guid: 5955f8852fbba404f875f24ce4b8dff8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Image_0.004
+    second: {fileID: 2800000, guid: 4e0ccc1c8e631ad42960dfec72ec1cd8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Image_3.004
+    second: {fileID: 2800000, guid: b7768b9723877b2418e41b46118516b9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Image_6.003
+    second: {fileID: 2800000, guid: e9007ab000853f348a413ec4bf7f69fd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Metal_Rough_01_basecolor
+    second: {fileID: 2800000, guid: 5ad6f7f21dc3b5f4b917acbf71e565ac, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Metal_Rough_01_metallic
+    second: {fileID: 2800000, guid: 94a60db875049d144aa5e0d58ca0848a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Steel Damaged Scratched and Smudged_BaseColor
+    second: {fileID: 2800000, guid: fb67cf4c440d58a4db2c5378eab6f282, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Steel Damaged Scratched and Smudged_Metallic
+    second: {fileID: 2800000, guid: 83721f0fec6d2104eae40193a31da5e4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Steel Damaged Scratched and Smudged_Roughness
+    second: {fileID: 2800000, guid: 282a1004473de4c43a47a6033a108168, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: StripedRoadMarker1_Color
+    second: {fileID: 2800000, guid: fabf6583afd007948bf91f573ef1a219, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: StripedRoadMarker1_Normal
+    second: {fileID: 2800000, guid: 3cef421250838ed42b878bb25de12573, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: StripedRoadMarker1_Roughness
+    second: {fileID: 2800000, guid: 4ff01ed91d6486c4c97a3a0c5560c545, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Untitled-1
+    second: {fileID: 2800000, guid: 6e0192f3cbc6f58458caa9d9974dfeb5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: metal-6-diffuse
+    second: {fileID: 2800000, guid: 33001f2d72a4f7d40b936b0f8dc7895d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: metal-6_metal
+    second: {fileID: 2800000, guid: 73bf089a8c080f840a9a5060e4b9ab2e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: metal-6_smooth
+    second: {fileID: 2800000, guid: 9335e2bf6ad01504282d8686d0525ffc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: metal04_diffuse
+    second: {fileID: 2800000, guid: 05ca614115efcb244871d27df82595ff, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: metal_diffuse
+    second: {fileID: 2800000, guid: 734b5aeef628488418f6d7e73f42dffb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: metal_metallic
+    second: {fileID: 2800000, guid: 24345be43c9464042b6eabf4773c3248, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: metal_normal_opengl
+    second: {fileID: 2800000, guid: 237144756514b404daa53d37218e985b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: plane_divided_DefaultMaterial_BaseColor
+    second: {fileID: 2800000, guid: 03266fedf5e820847b61225c2f7c2fc4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: plane_divided_DefaultMaterial_Normal
+    second: {fileID: 2800000, guid: 85a397e0d43d0a247a510f4fd50bb217, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: plane_divided_DefaultMaterial_Roughness
+    second: {fileID: 2800000, guid: 64e2e08bb57a6ef47984d10cdbd05932, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: transparent_plastic_14_color
+    second: {fileID: 2800000, guid: c617c8f7b27c7f749b926ed3d5425d0c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: transparent_plastic_14_normal
+    second: {fileID: 2800000, guid: c7b4c2a5d538add4794254bd9bdf462a, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
