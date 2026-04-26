@@ -170,6 +170,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3877315322252560076, guid: f80560f06c6a28149bb021d3d18fed79, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f80560f06c6a28149bb021d3d18fed79, type: 3}
       propertyPath: m_Name
       value: Fire watch person holding fire extinguisher pose
