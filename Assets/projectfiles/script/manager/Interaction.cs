@@ -458,9 +458,39 @@ public class Interaction : MonoBehaviour
     #endregion
 
 
- ///blood effect
- ///
- public void ToggleBloodEffect(bool temp)
+    #region chapter manager
+
+    public void checkMode()
+    {
+
+
+
+
+        if(GameManager.Instance.sequenceHandler.currentChapterIndex == 8)
+        {
+
+            if (SequenceManager.instance.currenctSubSequence.name == GameManager.Instance.sequenceHandler.finalSubsequence.name)
+            {
+                startEvent.chapterSubmit.Invoke();
+            }
+            else
+            {
+
+                CompleteInteractionEvent();
+
+            }
+
+        }
+        else { 
+        
+        startEvent.chapterSubmit.Invoke();
+        }
+    }
+
+    #endregion
+    ///blood effect
+    ///
+    public void ToggleBloodEffect(bool temp)
     {
         GameManager.Instance.BloodEffect(temp);
     }
@@ -474,6 +504,7 @@ public class startEvent
 {
     public UnityEvent Event;
     public UnityEvent offEvent;
+    public UnityEvent chapterSubmit;
     public List<AudioClip> Language;
     public List<String> content;
     public bool isTimeIntercation;
@@ -489,6 +520,8 @@ public class startEvent
 
     [Header("setting up ui")]
     public Sprite settingImage;
+
+
 
 }
 

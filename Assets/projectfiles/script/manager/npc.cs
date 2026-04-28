@@ -32,6 +32,19 @@ public class npc : MonoBehaviour
 
 
     public NpcMover npcMover;
+
+
+    public Transform weldingHandpointRef;
+    public Transform weldingHandpoint;
+    public bool isWeldingHand=false;
+
+
+    // blink particle
+    public GameObject particleObject;
+    public ParticleSystem particleEffect;
+    public AudioSource particleEffectAudio;
+    private bool isVfxLooping = false; // Tracks if the loop should keep going
+
     private void Start()
     {
         if (isHarness)
@@ -97,6 +110,8 @@ public class npc : MonoBehaviour
 
 
         npcMover.movementUpdate(anime);
+
+        isUpdateweldingHand();
     }
 
     void LateUpdate()
@@ -271,6 +286,91 @@ public class npc : MonoBehaviour
     {
         npcMover.currentWaypoint = temp;
     }
+
+
+    public void isUpdateweldingHand()
+    {
+        if (isWeldingHand)
+        {
+            if (weldingHandpointRef != null && weldingHandpoint != null)
+            {
+                // Direct follow
+                weldingHandpoint.position = weldingHandpointRef.position;
+                weldingHandpoint.rotation = weldingHandpointRef.rotation;
+
+                // Optional: Smoother follow for VR (prevents jitter)
+                // weldingHandpoint.position = Vector3.Lerp(weldingHandpoint.position, weldingHandpointRef.position, Time.deltaTime * 20f);
+                // weldingHandpoint.rotation = Quaternion.Slerp(weldingHandpoint.rotation, weldingHandpointRef.rotation, Time.deltaTime * 20f);
+            }
+        }
+
+    }
+
+    public void  updateweldingPoint(Transform temp)
+    {
+
+        weldingHandpoint = temp;
+    }
+
+    public void  weldingOnHand(bool temp)
+    {
+        isWeldingHand=temp;
+    }
+    // Call this method to start the process
+    public void triggerParticalEffect(bool shouldPlay)
+    {
+        if (shouldPlay)
+        {
+            // Only start if it's not already running to avoid stacking multiple loops
+            if (!isVfxLooping)
+            {
+                isVfxLooping = true;
+                StartCoroutine(PlayEffectRoutine());
+            }
+        }
+        else
+        {
+            // This will break the 'while' loop in the Coroutine
+            isVfxLooping = false;
+
+            // Optional: Immediate shutoff
+            StopImmediate();
+        }
+    }
+
+    private IEnumerator PlayEffectRoutine()
+    {
+        // This loop runs as long as isLooping is true
+        while (isVfxLooping)
+        {
+            yield return new WaitForSeconds(1f);
+
+            // 1. Turn everything ON
+            particleObject.SetActive(true);
+            particleEffect.Play();
+            particleEffectAudio.Play();
+
+            // 2. Wait for 10 seconds (the duration of the effect)
+            yield return new WaitForSeconds(2f);
+
+            // 3. Turn everything OFF
+            particleObject.SetActive(false);
+            particleEffect.Stop();
+            particleEffectAudio.Stop();
+
+            // 4. Wait for a small delay before starting the next loop (optional)
+            // If you want it to restart immediately, you can remove this line
+        }
+    }
+
+    // Helper method to kill the effect immediately when shouldPlay is false
+    private void StopImmediate()
+    {
+        particleObject.SetActive(false);
+        particleEffect.Stop();
+        particleEffectAudio.Stop();
+    }
+
 }
 
 [System.Serializable]
@@ -335,5 +435,7 @@ public void movementUpdate(Animator anim)
             }
         }
     }
+
+
 
 }

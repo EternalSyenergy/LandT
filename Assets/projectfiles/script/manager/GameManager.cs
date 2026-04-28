@@ -1,14 +1,9 @@
 ﻿using ItSeez3D.AvatarSdk.Oculus.HandTracking;
-using Meta.WitAi;
 using Oculus.Interaction;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.LowLevel;
-using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.XR;
@@ -34,8 +29,11 @@ public class GameManager : MonoBehaviour
     public Image bloodOverlay;
 
     public Bulp bulp;
-
+   
     public GameObject directionalLight;
+
+
+    public SequenceHandler sequenceHandler;
     public void Awake()
     {
         Instance = this;
@@ -48,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        fixteleportUpdate();
+      
 
         PlayerData.trackHarness();
         PlayerData.TrackWelding();
@@ -67,6 +65,8 @@ public class GameManager : MonoBehaviour
 
         UpdateLeftHandHookWallTip();
         UpdateRightHandHookWallTip();
+
+        fixteleportUpdate();
     }
     void EyeInteraction()
     {
@@ -291,30 +291,39 @@ public class GameManager : MonoBehaviour
 
 
 
+  
+
     // Fix player to a point (and start following it)
     private Transform fixedTarget;
     public bool isFixed = false;
 
     void fixteleportUpdate()
     {
+        //if (isFixed && fixedTarget != null)
+        //{
+        //    // Lock player position to target
+        //    PlayerData.player.transform.position = fixedTarget.position;
+        //    PlayerData.player.transform.rotation = fixedTarget.rotation;
+
+
+
+        //}
+
+
         if (isFixed && fixedTarget != null)
         {
-            // Lock player position to target
-            PlayerData.player.transform.position = fixedTarget.position;
-            PlayerData.player.transform.rotation = fixedTarget.rotation;
+            // This is the "Easy Way":
+            // Make the player a child of the target. Unity now handles movement perfectly.
+            PlayerData.player.transform.SetParent(fixedTarget);
 
-
-            // Lock rotation
-            //if (keepYRotation)
-            //{
-            //    Vector3 rot = PlayerData.player.transform.eulerAngles;
-            //    rot.y = fixedTarget.eulerAngles.y;
-            //    PlayerData.player.transform.eulerAngles = rot;
-            //}
-            //else
-            //{
-            //    PlayerData.player.transform.rotation = fixedTarget.rotation;
-            //}
+            // Reset local position/rotation to align perfectly with the target
+            PlayerData.player.transform.localPosition = Vector3.zero;
+            PlayerData.player.transform.localRotation = Quaternion.identity;
+        }
+        else
+        {
+            // Unparent the player when they are free to move again
+            PlayerData.player.transform.SetParent(null);
         }
     }
     public void FixToPointTeleport(Transform target)
@@ -862,11 +871,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator MoveWithShake(Transform obj, Vector3 targetPos)
+    public void updateBulpshake(float temp)
+    {
+        bulp.shakeAmount = temp;
+    }
+
+    IEnumerator MoveWithShake1(Transform obj, Vector3 targetPos)
     {
         float duration = 1.5f;          // total movement time
-        float shakeAmount = 0.2f;       // how far left-right
-        float shakeSpeed = 20f;         // how fast shaking
+      //  float shakeAmount = 0.2f;       // how far left-right
+        //float shakeSpeed = 20f;         // how fast shaking
+
+        float shakeAmount = .5f;       // how far left-right
+        float shakeSpeed = 5f;         // how fast shaking
+
 
         Vector3 startPos = obj.position;
         float time = 0f;
@@ -891,6 +909,42 @@ public class GameManager : MonoBehaviour
         obj.position = targetPos;
     }
 
+
+    IEnumerator MoveWithShake(Transform obj, Vector3 targetPos)
+    {
+        float moveDuration = bulp.bulpmoveDuration;
+       
+        float shakeSpeed = bulp.shakeSpeed;
+
+        Vector3 startPos = obj.position;
+        float time = 0f;
+
+        // Phase 1: Move to Target while shaking
+        while (time < moveDuration)
+        {
+            time += Time.deltaTime;
+            float t = time / moveDuration;
+
+            Vector3 movePos = Vector3.Lerp(startPos, targetPos, t);
+
+            // Removed the (1-t) so the shake doesn't die out
+            float shakeOffset = Mathf.Sin(Time.time * shakeSpeed) * bulp.shakeAmount;
+            movePos.x += shakeOffset;
+
+            obj.position = movePos;
+            yield return null;
+        }
+
+        // Phase 2: Stay at target but keep swinging
+        while (true)
+        {
+            Vector3 idlePos = targetPos;
+            idlePos.z += Mathf.Sin(Time.time * shakeSpeed) *bulp.shakeAmount;
+            obj.position = idlePos;
+            yield return null;
+        }
+    }
+
     #endregion
 
 
@@ -911,6 +965,30 @@ public class GameManager : MonoBehaviour
 
         }
     }
+
+
+    public void CameraDistaance(float temp)
+    {
+        PlayerData.playerCam.farClipPlane    = temp;
+    }
+
+    #region Chapter Management
+
+    public void updateChapter(string temp)
+    {
+        GameManager.Instance.sequenceHandler.updateCurrentChapter(temp);
+    }
+    public void updateChapterIndex(int temp)
+    {
+        GameManager.Instance.sequenceHandler.updateCurrentChapterIndex(temp);
+        updateChapter(GameManager.Instance.sequenceHandler.chapterGroups[temp-1].chapterName);
+    }
+    public void MoveCurrentChapterAsNextSibling()
+    {
+        GameManager.Instance.sequenceHandler.MoveCurrentChaptersAsNextSiblings();
+    }
+
+    #endregion
 }
 
 [System.Serializable]
@@ -956,6 +1034,8 @@ public class PlayerData
     public Transform weldingHandPos;
     public Transform weldingObject;
     public bool isWeldingOnhand;
+
+    public Camera playerCam;
     public void TrackWelding()
     {
 
@@ -1001,7 +1081,10 @@ public class PlayerData
         playerHarness.transform.SetPositionAndRotation(playerHarnessTractPos.position, playerHarnessTractPos.rotation);
     }
 
- 
+
+
+
+
 }
 
 [System.Serializable]
@@ -1059,8 +1142,85 @@ public class Bulp
     public Transform bulpObj;
     public Transform bulpEndPos;
     public bool isbulpMove;
+    public float shakeAmount = 0.5f;
+    public float shakeSpeed = 0.5f;
+    public float bulpmoveDuration=1.5f;
+
 
 }
 
 
 
+// 
+[System.Serializable]
+public class SequenceHandler
+{
+
+    public GameObject parent;
+    public GameObject targetchild;
+    public GameObject finalSubsequence;
+    public List<ChapterGroup> chapterGroups;
+
+    public string currentChapter;
+    public int currentChapterIndex;
+   
+
+    public void updateCurrentChapter(string temp)
+    {
+        currentChapter = temp;
+    }
+
+    public void MoveCurrentChaptersAsNextSiblings()
+    {
+        // Safety check for parent and references
+        if (parent == null || targetchild == null || chapterGroups.Count == 0) return;
+
+        // 1. Find where the targetchild is in the hierarchy
+        int targetIndex = targetchild.transform.GetSiblingIndex();
+
+        // 2. Get the list of Chapters for the selected category (PPE, LOTO, etc.)
+        ChapterGroup activeGroup = chapterGroups[currentChapterIndex-1];
+
+        // 3. Move each chapter object to be the NEXT sibling
+        for (int i = 0; i < activeGroup.Chapters.Count; i++)
+        {
+            GameObject chapterObj = activeGroup.Chapters[i];
+
+            if (chapterObj != null)
+            {
+                // Ensure it is under the same parent
+                chapterObj.transform.SetParent(parent.transform);
+
+                // Set index to (targetIndex + 1 + i) to stack them right below target
+                chapterObj.transform.SetSiblingIndex(targetIndex + 1 + i);
+
+                // Basic transform reset for UI alignment
+                //chapterObj.transform.localPosition = Vector3.zero;
+                //chapterObj.transform.localRotation = Quaternion.identity;
+                //chapterObj.transform.localScale = Vector3.one;
+
+                chapterObj.SetActive(true);
+            }
+        }
+    }
+
+    public void updateCurrentChapterIndex(int temp)
+    {
+        if (temp >= 0 && temp < chapterGroups.Count)
+        {
+            currentChapterIndex = temp;
+        }
+    }   
+
+
+
+}
+[System.Serializable]
+public class ChapterGroup
+{
+    public List<GameObject> Chapters;
+    public string chapterName;
+    public int chapterIndex;
+
+
+}

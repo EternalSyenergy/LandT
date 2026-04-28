@@ -24,6 +24,7 @@ public class UiManager : MonoBehaviour
     public PlayeUiRef playeUiRef;
 
     public SettingUpUi settingUpUi;
+    public ChapterManagementUi chapterManagementUi;
     private void Awake()
     {
         instance = this;
@@ -170,6 +171,11 @@ public class UiManager : MonoBehaviour
     }
 
 
+
+    #region chapter management
+
+
+    #endregion
 }
 
 [System.Serializable]
@@ -270,6 +276,15 @@ public class SettingUpUi
 
 
 
+
+[System.Serializable]
+public class ChapterManagementUi
+{
+
+    public GameObject selectChapterObj;
+
+
+}
 
 
 
